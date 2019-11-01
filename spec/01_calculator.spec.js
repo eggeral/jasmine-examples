@@ -1,0 +1,17 @@
+class Calculator {
+    add(a,b) {
+        return a + b;
+    }
+}
+
+describe("Calculator", function () {
+    it("can add two numbers", function () {
+        // given 
+        let calculator = new Calculator();
+        // when 
+        let result = calculator.add(2,3);
+        // then
+        expect(result).toBe(5);
+    });
+});
+
