@@ -1,10 +1,5 @@
-class Calculator {
-    add(a,b) {
-        return a + b;
-    }
-}
-
 describe("Calculator", function () {
+    var Calculator = require('../lib/calculator');
     it("can add two numbers", function () {
         // given 
         let calculator = new Calculator();
