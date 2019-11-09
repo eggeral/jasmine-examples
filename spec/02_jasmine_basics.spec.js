@@ -105,7 +105,7 @@ describe('Jasmine Basics', function () {
                 fail('Failing but marked a pending');
             });
 
-        })
+        });
 
         xit('should mark specs declared with xit as pending', function () {
             fail('Failing but marked a pending');
@@ -175,17 +175,33 @@ describe('Jasmine Basics', function () {
                 expect(function () { throw Error('test') }).toThrowError(/te.*/);
                 expect(function () { throw 'error' }).toThrow('error');
                 expect(function () { throw { a: 'error' } }).toThrowMatching(function (thrown) { return thrown.a === 'error' });
-            })
+            });
         });
 
         describe('toBeInstanceOf', function () {
-            let Calculator = require('../lib/calculator');
 
             it('should test if a given object is a certain class', function () {
+                let Calculator = require('../lib/calculator');
                 expect('foo').toBeInstanceOf(String);
                 expect(3).toBeInstanceOf(Number);
                 expect(new Calculator()).toBeInstanceOf(Calculator);
-            })
+            });
+        });
+
+        describe('any', function() {
+            it('should be match objects by type', function() {
+                let Calculator = require('../lib/calculator');
+                expect('foo').toEqual(jasmine.any(String));
+                expect('foo').not.toEqual(jasmine.any(Number));
+                expect(new Calculator()).toEqual(jasmine.any(Calculator));
+            });
+        });
+
+        describe('objectContaining', function() {
+            it('should be match parts of objects', function() {
+                expect({a: 'x', b: 'y'}).toEqual(jasmine.objectContaining({b: 'y'}));
+                expect({a: 'x', b: 'y'}).not.toEqual(jasmine.objectContaining({c: 'z'}));
+            });
         });
 
     });

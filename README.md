@@ -9,8 +9,6 @@ Verify your Node installation by running
 # Install Visual Studio Code
 Download VS-Code from: https://code.visualstudio.com/#alt-downloads and run the installer.
 
-Add the ```Jasmine Test Explorer``` extension
-
 # Setup a basic Jasmine project
 
 See ```package.json``` for dependencies and script defintions
