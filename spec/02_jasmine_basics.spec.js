@@ -7,9 +7,17 @@ describe('Jasmine Basics', function () {
             expect(1).toBe(1);
             expect('1').not.toBe(1);
             expect('1' == 1).toBe(true);
+            expect({ a: 'a', b: 'b' }).not.toBe({ a: 'a', b: 'b' });
 
         });
 
+    });
+
+    describe('toEqual', function () {
+        it('should compare two objects using deep equal', function () {
+            expect(1).toEqual(1); // like toBe
+            expect({ a: 'a', b: 'b' }).toEqual({ a: 'a', b: 'b' });
+        });
     });
 
     describe('Setup and cleanup', function () {
@@ -112,19 +120,14 @@ describe('Jasmine Basics', function () {
         });
 
         it('should mark specs calling pending as pending', function () {
-            // fail('Failing but marked a pending'); // this line is still reported as failure
-            pending('Unclear. Have to ask PO');
+            // fail('failing'); // this line is reported as failure but the spec passes
+            pending('Unclear after this point. Have to ask PO');
+            fail('pending'); // this line is reported as pending
         });
 
     });
 
     describe('matchers', function () {
-
-        describe('toEqual', function () {
-            it('should compare two objects using deep equal', function () {
-                expect({ a: 'a', b: 'b' }).toEqual({ a: 'a', b: 'b' });
-            });
-        });
 
         describe('toBeCloseTo', function () {
             it('should compare two float using the given precision', function () {
@@ -201,6 +204,7 @@ describe('Jasmine Basics', function () {
             it('should be match parts of objects', function() {
                 expect({a: 'x', b: 'y'}).toEqual(jasmine.objectContaining({b: 'y'}));
                 expect({a: 'x', b: 'y'}).not.toEqual(jasmine.objectContaining({c: 'z'}));
+                expect({a: 'x', b: 'y'}).toEqual(jasmine.objectContaining({b: jasmine.any(String)}));
             });
         });
 
