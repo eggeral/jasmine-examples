@@ -1,5 +1,6 @@
+const Calculator = require('../lib/calculator');
+
 describe("Calculator", function () {
-    var Calculator = require('../lib/calculator');
     it("can add two numbers", function () {
         // given 
         let calculator = new Calculator();
